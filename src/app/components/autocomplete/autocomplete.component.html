@@ -1,16 +1,6 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Number</mat-label>
-        <input type="Autocomplete Fund Clients"
-            placeholder="Autocomplete Fund Clients"
-            aria-label="Autocomplete Fund Clients"
-            matInput
-            [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of options" [value]="option">
-            {{option}}
-        </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-</form>
-  
+<mat-form-field appearance="fill">
+    <mat-label>Autocomplete Funds Clients</mat-label>
+    <mat-select multiple>
+        <mat-option *ngFor="let fund of fundsList" [value]="fund">{{fund}}</mat-option>
+    </mat-select>
+  </mat-form-field>

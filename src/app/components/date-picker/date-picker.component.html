@@ -1,2 +1,7 @@
-
+<mat-form-field appearance="fill">
+  <mat-label>Date</mat-label>
+  <mat-datepicker-toggle matIconPrefix [for]="picker"></mat-datepicker-toggle>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
   

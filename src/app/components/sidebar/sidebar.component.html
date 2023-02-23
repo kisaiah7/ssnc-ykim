@@ -1,25 +1,24 @@
-<div [ngClass]="{ 'sidebar': true, 'open': true }">
-    <mat-icon class="toggle" aria-hidden="false" aria-label="Toggle sidebar" fontIcon="arrow_back_ios_new"></mat-icon>
-    <mat-list>
-        <mat-list-item>
-            <span matListItemIcon><img src="/assets/dashboard_icon-white-24px.svg" alt="Click for Dashboard"></span>
-            <span matListItemTitle>Dashboard</span>
-        </mat-list-item>
-        <mat-list-item>
-            <span matListItemIcon>
-                <mat-icon aria-hidden="false" aria-label="Click for Fund" fontIcon="account_balance"></mat-icon>
-            </span>
-            <span matListItemTitle>Fund</span>
-        </mat-list-item>
-        <mat-list-item>
-            <span matListItemIcon>
-                <mat-icon aria-hidden="false" aria-label="Click for Summary by Fund" fontIcon="list"></mat-icon>
-            </span>
-            <span matListItemTitle>Summary by Fund</span>
-            </mat-list-item>
-        <mat-list-item>
-            <span matListItemIcon><img src="/assets/custom_view-white-24dp.svg" alt="Click for Custom View"></span>
-            <span matListItemTitle>Custom View</span>
-        </mat-list-item>
-      </mat-list>
+<div [ngClass]="{ 'sidebar': true, 'closed': closed }">
+    <ul>
+        <li class="toggle">
+            <mat-icon (click)="toggleSidebar()" *ngIf="closed" aria-hidden="false" aria-label="Toggle sidebar" fontIcon="navigate_next"></mat-icon>
+            <mat-icon (click)="toggleSidebar()" *ngIf="!closed" aria-hidden="false" aria-label="Toggle sidebar" fontIcon="navigate_before"></mat-icon>
+        </li>
+        <li>
+            <img src="/assets/dashboard_icon-white-24px.svg" alt="Click for Dashboard">
+            <h3 *ngIf="!closed">Dashboard</h3>
+        </li>
+        <li>
+            <img src="/assets/Fund_CCY_Date_icon-white-24dp.svg" alt="Click for Fund">
+            <h3 *ngIf="!closed">Fund</h3>
+        </li>
+        <li>
+            <img src="/assets/summary_by_fund-white-24px.svg" alt="Click for Summary by Fund">
+            <h3 *ngIf="!closed">Summary by Fund</h3>
+        </li>
+        <li>
+            <img src="/assets/custom_view-white-24dp.svg" alt="Click for Custom View">
+            <h3 *ngIf="!closed">Custom View</h3>
+        </li>
+    </ul>
 </div>

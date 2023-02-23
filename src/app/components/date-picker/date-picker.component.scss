@@ -1,0 +1,8 @@
+mat-form-field {
+    width: 240px;
+}
+
+mat-form-field .mat-mdc-form-field-flex {
+    display: flex;
+    flex-direction: row-reverse;   
+}

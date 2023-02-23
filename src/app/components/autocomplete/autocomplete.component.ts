@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteComponent {
-  options: [string]
+  fundsList: Array<string> = [];
 
   constructor() {
-    this.options = ['asdf']
+    this.fundsList = ['asdf', 'asdf','asdf'];
   }
 }
