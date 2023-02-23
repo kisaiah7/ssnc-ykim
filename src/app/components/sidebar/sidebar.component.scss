@@ -20,12 +20,29 @@
 }
 
 .sidebar ul li {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
 
     padding: 10px 0;
     cursor: pointer;
+
+    background: linear-gradient(90deg, #052950 0%, #052950 100%);
 }
+
+.sidebar ul li:not(:first-child)::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(1,80,131,1) 0%, rgba(29,140,169,1) 100%);
+    z-index: -1;
+    transition: opacity 0.3s linear;
+    opacity: 0;
+  }
 
 .sidebar ul li.toggle {
     display: flex;
@@ -44,15 +61,15 @@
 
     padding: 10px 0;
     cursor: pointer;
+    transition: 0.5s ease;
 }
 
-.sidebar ul li:not(:first-child):hover {
-    background: rgb(1,80,131);
-    background: linear-gradient(90deg, rgba(1,80,131,1) 0%, rgba(29,140,169,1) 100%);
+.sidebar ul li:not(:first-child):hover::before {
+    opacity: 1;
 } 
 
 .sidebar ul li img {
-    margin: 0 20px;
+    margin: 5px 23px;
 }
 
 .sidebar ul li h3 {

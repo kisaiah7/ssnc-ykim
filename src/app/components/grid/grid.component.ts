@@ -69,23 +69,4 @@ export class GridComponent {
   clearSelection(): void {
     this.agGrid.api.deselectAll();
   }
-
-  resetPinned() {
-    this.gridColumnApi.applyColumnState({
-      state: [
-        { colId: 'rowNum', pinned: 'left' },
-        { colId: 'athlete', pinned: 'left' },
-        { colId: 'age', pinned: 'left' },
-        { colId: 'total', pinned: 'right' },
-      ],
-      defaultState: { pinned: null },
-    });
-  }
-
-  pinCountry() {
-    this.gridColumnApi.applyColumnState({
-      state: [{ colId: 'country', pinned: 'left' }],
-      defaultState: { pinned: null },
-    });
-  }
 }
