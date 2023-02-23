@@ -1,4 +1,17 @@
+
 mat-form-field {
-    width: 47%;
-    max-width: 778px;
+    width: 778px;
+}
+
+mat-form-field .chosen-chip {
+    background-color: var(--lightblue);
+    border-radius: 4px;
+}
+
+.mat-mdc-chip-remove {
+    opacity: 0.9;
+}
+.mat-mdc-standard-chip {
+    --mdc-chip-label-text-color: #fff;
+    --mdc-chip-with-trailing-icon-trailing-icon-color: #fff;
 }

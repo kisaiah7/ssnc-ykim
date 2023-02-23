@@ -1,6 +1,15 @@
-<mat-form-field appearance="fill">
+<mat-form-field>
     <mat-label>Autocomplete Funds Clients</mat-label>
-    <mat-select multiple>
-        <mat-option *ngFor="let fund of fundsList" [value]="fund">{{fund}}</mat-option>
+    <mat-select [formControl]="fundsControl" multiple>
+      <mat-select-trigger>
+        <mat-chip-listbox>
+          <mat-chip class="chosen-chip" *ngFor="let fund of fundsControl.value"
+            [removable]="true" (removed)="onFundRemoved(fund)">
+            <mat-icon matChipRemove>cancel</mat-icon>
+            {{ fund }}
+          </mat-chip>
+        </mat-chip-listbox>
+      </mat-select-trigger>
+      <mat-option *ngFor="let fund of fundsList" [value]="fund">{{fund}}</mat-option>
     </mat-select>
   </mat-form-field>

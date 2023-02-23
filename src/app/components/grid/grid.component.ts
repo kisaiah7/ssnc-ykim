@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
+import { CellClickedEvent, ColDef, GridReadyEvent, FirstDataRenderedEvent, ColumnApi } from 'ag-grid-community';
 
 import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/Item';
@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent {
+  private gridColumnApi!: ColumnApi;
+
    // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
     { headerName: 'Fund', field: 'fund', type: 'leftAligned', cellStyle: {color: '#0985C7'}, filter: 'agTextColumnFilter' },
@@ -48,6 +50,10 @@ export class GridComponent {
 
   ngOnInit(): void {}
 
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    params.api.sizeColumnsToFit();
+  }
+
   // Example load data from sever
   onGridReady(params: GridReadyEvent) {
     this.itemService.getItems().subscribe((items) => {this.rowData$ = items});
@@ -61,5 +67,24 @@ export class GridComponent {
   // Example using Grid's API
   clearSelection(): void {
     this.agGrid.api.deselectAll();
+  }
+
+  resetPinned() {
+    this.gridColumnApi.applyColumnState({
+      state: [
+        { colId: 'rowNum', pinned: 'left' },
+        { colId: 'athlete', pinned: 'left' },
+        { colId: 'age', pinned: 'left' },
+        { colId: 'total', pinned: 'right' },
+      ],
+      defaultState: { pinned: null },
+    });
+  }
+
+  pinCountry() {
+    this.gridColumnApi.applyColumnState({
+      state: [{ colId: 'country', pinned: 'left' }],
+      defaultState: { pinned: null },
+    });
   }
 }

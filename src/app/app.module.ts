@@ -12,29 +12,30 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
-import { GridItemComponent } from './components/grid-item/grid-item.component';
 import { GridComponent } from './components/grid/grid.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { SelectedFundsComponent } from './components/selected-funds/selected-funds.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { GridHeaderComponent } from './components/grid/grid-header/grid-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ButtonComponent,
-    GridItemComponent,
     GridComponent,
     SidebarComponent,
     DatePickerComponent,
     SelectedFundsComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    GridHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

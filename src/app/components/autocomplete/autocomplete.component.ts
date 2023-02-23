@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-autocomplete',
@@ -6,9 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteComponent {
-  fundsList: Array<string> = [];
+  fundsControl = new FormControl([]);
+  fundsList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
-  constructor() {
-    this.fundsList = ['asdf', 'asdf','asdf'];
+  constructor() {}
+
+  onFundRemoved(fund: string) {
+    const funds = this.fundsControl.value as never[];
+    this.removeFirst(funds, fund);
+    this.fundsControl.setValue(funds); // To trigger change detection
+  }
+
+  private removeFirst<T>(array: T[], toRemove: T): void {
+    const index = array.indexOf(toRemove);
+    if (index !== -1) {
+      array.splice(index, 1);
+    }
   }
 }
