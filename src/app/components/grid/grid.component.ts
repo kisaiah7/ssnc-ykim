@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent, FirstDataRenderedEvent, ColumnApi } from 'ag-grid-community';
+import "ag-grid-enterprise";
 
 import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/Item';
@@ -16,23 +17,23 @@ export class GridComponent {
 
    // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
-    { headerName: 'Fund', field: 'fund', type: 'leftAligned', cellStyle: {color: '#0985C7'}, filter: 'agTextColumnFilter' },
+    { headerName: 'Fund', field: 'fund', cellStyle: {color: '#0985C7'}, width: 150 },
     { 
       headerName: 'Pending Actions', 
       field: 'pending_actions', 
-      type: 'centerAligned', 
       cellStyle: {
         backgroundImage: "url('/assets/pending_actions_black_24dp.svg')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         filter: "invert(40%) sepia(99%) saturate(2488%) hue-rotate(176deg) brightness(88%) contrast(93%)"
-      } 
+      },
+      width: 200
     },
-    { headerName: 'Daily Book P&L', field: 'daily_book_pl', type: 'rightAligned', filter: 'agTextColumnFilter' },
-    { headerName: 'MTD Book P&L', field: 'mtd_book_pl', type: 'rightAligned', filter: 'agNumberColumnFilter' },
-    { headerName: 'YTD Book P&L', field: 'ytd_book_pl', type: 'rightAligned', filter: 'agNumberColumnFilter' },
-    { headerName: 'End Book NAV', field: 'end_book_nav', type: 'rightAligned', filter: 'agNumberColumnFilter' },
-    { headerName: 'Client', field: 'client', type: 'leftAligned', filter: 'agTextColumnFilter' },
+    { headerName: 'Daily Book P&L', field: 'daily_book_pl', type: 'rightAligned', width: 200 },
+    { headerName: 'MTD Book P&L', field: 'mtd_book_pl', type: 'rightAligned', width: 200 },
+    { headerName: 'YTD Book P&L', field: 'ytd_book_pl', type: 'rightAligned', width: 200 },
+    { headerName: 'End Book NAV', field: 'end_book_nav', type: 'rightAligned', width: 200 },
+    { headerName: 'Client', field: 'client', width: 200 },
   ];
 
   // DefaultColDef sets props common to all Columns
