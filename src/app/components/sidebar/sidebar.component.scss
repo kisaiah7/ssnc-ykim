@@ -1,0 +1,31 @@
+.sidebar {
+    height: 100%;
+    margin-left: 24px;
+
+    border: 2px solid white;
+    background-color: #052950;
+    color: #ffffff;
+
+    box-shadow: 0px 10px 10px -3px rgba(0,0,0,0.2);
+}
+
+.sidebar.open {
+    width: 271px;
+}
+
+.sidebar .toggle {
+    float: right;
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+.sidebar mat-list mat-list-item {
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.sidebar mat-list mat-list-item:hover {
+    background: rgb(1,80,131);
+    background: linear-gradient(90deg, rgba(1,80,131,1) 0%, rgba(29,140,169,1) 100%);
+} 

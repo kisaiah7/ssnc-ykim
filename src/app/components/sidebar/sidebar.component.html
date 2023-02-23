@@ -1,0 +1,25 @@
+<div [ngClass]="{ 'sidebar': true, 'open': true }">
+    <mat-icon class="toggle" aria-hidden="false" aria-label="Toggle sidebar" fontIcon="arrow_back_ios_new"></mat-icon>
+    <mat-list>
+        <mat-list-item>
+            <span matListItemIcon><img src="/assets/dashboard_icon-white-24px.svg" alt="Click for Dashboard"></span>
+            <span matListItemTitle>Dashboard</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemIcon>
+                <mat-icon aria-hidden="false" aria-label="Click for Fund" fontIcon="account_balance"></mat-icon>
+            </span>
+            <span matListItemTitle>Fund</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemIcon>
+                <mat-icon aria-hidden="false" aria-label="Click for Summary by Fund" fontIcon="list"></mat-icon>
+            </span>
+            <span matListItemTitle>Summary by Fund</span>
+            </mat-list-item>
+        <mat-list-item>
+            <span matListItemIcon><img src="/assets/custom_view-white-24dp.svg" alt="Click for Custom View"></span>
+            <span matListItemTitle>Custom View</span>
+        </mat-list-item>
+      </mat-list>
+</div>
