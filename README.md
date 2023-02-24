@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` to start up the website. Navigate to `http://localhost:4200/`.
 
-Run `npm run server` for a backend server. Optionally navigate to `http://localhost:5000/` to view the json data.
+Run `npm run server` to start up the backend server. Optionally navigate to `http://localhost:5000/` to view the json data.
 
 ## Build
 
