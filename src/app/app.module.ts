@@ -14,6 +14,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -25,6 +28,7 @@ import { SelectedFundsComponent } from './components/selected-funds/selected-fun
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { GridHeaderComponent } from './components/grid/grid-header/grid-header.component';
+import { BlankPageComponent } from './components/blank-page/blank-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import { GridHeaderComponent } from './components/grid/grid-header/grid-header.c
     DatePickerComponent,
     SelectedFundsComponent,
     AutocompleteComponent,
-    GridHeaderComponent
+    GridHeaderComponent,
+    BlankPageComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,8 @@ import { GridHeaderComponent } from './components/grid/grid-header/grid-header.c
     MatNativeDateModule,
     MatChipsModule,
     MatSnackBarModule,
+    MatMenuModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

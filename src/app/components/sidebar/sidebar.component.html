@@ -1,22 +1,22 @@
-<div [ngClass]="{ 'sidebar': true, 'closed': closed }">
+<div [ngClass]="{ 'sidebar': true, 'closed': closed, 'closing': closing, 'opening': opening }">
     <ul>
         <li class="toggle">
             <mat-icon (click)="toggleSidebar()" *ngIf="closed" aria-hidden="false" aria-label="Toggle sidebar" fontIcon="navigate_next"></mat-icon>
             <mat-icon (click)="toggleSidebar()" *ngIf="!closed" aria-hidden="false" aria-label="Toggle sidebar" fontIcon="navigate_before"></mat-icon>
         </li>
-        <li>
+        <li [ngClass]="{'active': selectedTab === 'dashboard'}" (click)="selectedTab = 'dashboard'">
             <img src="/assets/dashboard_icon-white-24px.svg" alt="Click for Dashboard">
             <h3 *ngIf="!closed">Dashboard</h3>
         </li>
-        <li>
+        <li [ngClass]="{'active': selectedTab === 'fund'}" (click)="selectedTab = 'fund'">
             <img src="/assets/Fund_CCY_Date_icon-white-24dp.svg" alt="Click for Fund">
             <h3 *ngIf="!closed">Fund</h3>
         </li>
-        <li>
+        <li [ngClass]="{'active': selectedTab === 'summary'}" (click)="selectedTab = 'summary'">
             <img src="/assets/summary_by_fund-white-24px.svg" alt="Click for Summary by Fund">
             <h3 *ngIf="!closed">Summary by Fund</h3>
         </li>
-        <li>
+        <li [ngClass]="{'active': selectedTab === 'custom'}" (click)="selectedTab = 'custom'">
             <img src="/assets/custom_view-white-24dp.svg" alt="Click for Custom View">
             <h3 *ngIf="!closed">Custom View</h3>
         </li>

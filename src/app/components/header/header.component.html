@@ -4,6 +4,13 @@
             <img [className]="'icon'" src="/assets/Momentum-logo.svg" alt="momentum-logo">
             <img [className]="'text'" src="/assets/Momentum-text.svg" alt="Momentum">
         </div>
-        <img [className]="'avatar'" src="/assets/account_circle-white-24dp.svg" alt="avatar" (click)="openSnackBar('Mock Action', 'Dismiss')" >
+        <mat-icon matBadge="15" matBadgeColor="accent">
+            <img [className]="'avatar'" src="/assets/account_circle-white-24dp.svg" alt="avatar" [matMenuTriggerFor]="menu" >
+        </mat-icon>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Settings</button>
+            <button mat-menu-item>Logout</button>
+        </mat-menu>
     </div>
 </header>

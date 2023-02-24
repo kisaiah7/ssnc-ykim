@@ -14,8 +14,28 @@ import { Observable } from 'rxjs';
 })
 export class GridComponent {
   private gridColumnApi!: ColumnApi;
+  closed: boolean = false;
+  closing: boolean = false;
+  opening: boolean = false;
 
-   // Each Column Definition results in one Column.
+  toggleGrid() {
+    if (this.closed) {
+      this.opening = true;
+      this.closed = false;
+
+      setTimeout(()=>{
+        this.opening = false;
+      },500)
+    } else {
+      this.closing = true;
+      setTimeout(()=>{
+        this.closing = false;
+        this.closed = true;
+      },500)
+    }
+  }
+  
+  // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
     { headerName: 'Fund', field: 'fund', cellStyle: {color: '#0985C7'}, width: 150 },
     { 
@@ -27,13 +47,13 @@ export class GridComponent {
         backgroundPosition: "center",
         filter: "invert(40%) sepia(99%) saturate(2488%) hue-rotate(176deg) brightness(88%) contrast(93%)"
       },
-      width: 200
+      width: 185
     },
-    { headerName: 'Daily Book P&L', field: 'daily_book_pl', type: 'rightAligned', width: 200 },
-    { headerName: 'MTD Book P&L', field: 'mtd_book_pl', type: 'rightAligned', width: 200 },
-    { headerName: 'YTD Book P&L', field: 'ytd_book_pl', type: 'rightAligned', width: 200 },
-    { headerName: 'End Book NAV', field: 'end_book_nav', type: 'rightAligned', width: 200 },
-    { headerName: 'Client', field: 'client', width: 200 },
+    { headerName: 'Daily Book P&L', field: 'daily_book_pl', type: 'rightAligned', width: 185 },
+    { headerName: 'MTD Book P&L', field: 'mtd_book_pl', type: 'rightAligned', width: 185 },
+    { headerName: 'YTD Book P&L', field: 'ytd_book_pl', type: 'rightAligned', width: 185 },
+    { headerName: 'End Book NAV', field: 'end_book_nav', type: 'rightAligned', width: 185 },
+    { headerName: 'Client', field: 'client', width: 185 },
   ];
 
   // DefaultColDef sets props common to all Columns
