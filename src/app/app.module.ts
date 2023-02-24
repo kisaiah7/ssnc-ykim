@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -52,7 +53,8 @@ import { GridHeaderComponent } from './components/grid/grid-header/grid-header.c
     MatButtonModule,
     MatSelectModule,
     MatNativeDateModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

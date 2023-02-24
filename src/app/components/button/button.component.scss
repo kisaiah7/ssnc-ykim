@@ -13,4 +13,10 @@ button {
     border-radius: 2px;
     border: none;
     cursor: pointer;
+
+    transition: 0.5s ease;
+}
+
+button:hover {
+    box-shadow: 0 1px 1px black;
 }

@@ -1,9 +1,9 @@
 <header>
     <div [className]="'wrapper'">
-        <div [className]="'logo'">
+        <div [className]="'logo'" (click)="openSnackBar('Mock Action', 'Dismiss')">
             <img [className]="'icon'" src="/assets/Momentum-logo.svg" alt="momentum-logo">
             <img [className]="'text'" src="/assets/Momentum-text.svg" alt="Momentum">
         </div>
-        <img [className]="'avatar'" src="/assets/account_circle-white-24dp.svg" alt="avatar">
+        <img [className]="'avatar'" src="/assets/account_circle-white-24dp.svg" alt="avatar" (click)="openSnackBar('Mock Action', 'Dismiss')" >
     </div>
 </header>

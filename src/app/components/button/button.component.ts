@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-button',
@@ -6,16 +7,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
-  @Input() text: string;
-  @Output() btnClick = new EventEmitter();
+  @Input() text!: string;
 
-  constructor() {
-    this.text = 'click';
-  }
+  constructor(private _snackBar: MatSnackBar) {}
 
-  ngOnInit(): void {}
-
-  onClick() {
-    this.btnClick.emit();
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

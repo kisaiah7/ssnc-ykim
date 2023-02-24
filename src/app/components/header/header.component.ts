@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  title: string = 'Momentum';
+  constructor(private _snackBar: MatSnackBar) {}
 
-  constructor() {
-
-  }
-
-  ngOnInit(): void {
-
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }
