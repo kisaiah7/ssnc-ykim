@@ -1,19 +1,16 @@
 button {
     height: 40px;
     padding: 0 26px;
-
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 600;
     background-color: var(--lightblue);
     color: #fff;
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
-
     border-radius: 2px;
     border: none;
     cursor: pointer;
-
     transition: 0.5s ease;
 }
 

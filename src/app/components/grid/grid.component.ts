@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent, ColDef, GridReadyEvent, FirstDataRenderedEvent, ColumnApi } from 'ag-grid-community';
+import { CellClickedEvent, ColDef, GridReadyEvent, FirstDataRenderedEvent } from 'ag-grid-community';
 import "ag-grid-enterprise";
 
 import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/Item';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-grid',
@@ -13,10 +12,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent {
-  private gridColumnApi!: ColumnApi;
   closed: boolean = false;
   closing: boolean = false;
   opening: boolean = false;
+  rowData$!: Item[];
+  @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
   toggleGrid() {
     if (this.closed) {
@@ -35,7 +35,7 @@ export class GridComponent {
     }
   }
   
-  // Each Column Definition results in one Column.
+  // ag-grid properties by column
   public columnDefs: ColDef[] = [
     { headerName: 'Fund', field: 'fund', cellStyle: {color: '#0985C7'}, width: 150 },
     { 
@@ -56,37 +56,20 @@ export class GridComponent {
     { headerName: 'Client', field: 'client', width: 185 },
   ];
 
-  // DefaultColDef sets props common to all Columns
+  // ag-grid default properties for columns
   public defaultColDef: ColDef = {
     sortable: true,
     filter: 'agSetColumnFilter',
   };
 
-  rowData$!: Item[];
-
-  // For accessing the Grid's API
-  @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
-
   constructor(private itemService: ItemService) {} 
-
-  ngOnInit(): void {}
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.sizeColumnsToFit();
   }
 
-  // Example load data from sever
+  // load grid data from server
   onGridReady(params: GridReadyEvent) {
     this.itemService.getItems().subscribe((items) => {this.rowData$ = items});
-  }
-
-  // Example of consuming Grid Event
-  onCellClicked(e: CellClickedEvent): void {
-    console.log('cellClicked', e);
-  }
-
-  // Example using Grid's API
-  clearSelection(): void {
-    this.agGrid.api.deselectAll();
   }
 }

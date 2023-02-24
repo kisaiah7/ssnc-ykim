@@ -24,7 +24,6 @@ import { ButtonComponent } from './components/button/button.component';
 import { GridComponent } from './components/grid/grid.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
-import { SelectedFundsComponent } from './components/selected-funds/selected-funds.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { GridHeaderComponent } from './components/grid/grid-header/grid-header.component';
@@ -38,7 +37,6 @@ import { BlankPageComponent } from './components/blank-page/blank-page.component
     GridComponent,
     SidebarComponent,
     DatePickerComponent,
-    SelectedFundsComponent,
     AutocompleteComponent,
     GridHeaderComponent,
     BlankPageComponent
