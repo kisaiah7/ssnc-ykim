@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  visibleTab: string = 'dashboard';
+
+  changeView($event: any) {
+    this.visibleTab = $event;
+  }
 }

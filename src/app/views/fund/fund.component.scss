@@ -1,0 +1,15 @@
+.actions .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions .row .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.actions .selected-funds h3 {
+    font-size: 12px;
+    color: var(--lightblue);
+}

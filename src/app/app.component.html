@@ -1,24 +1,11 @@
 <div [className]="'app'">
     <app-header></app-header>
     <div [className]="'container'">
-        <app-sidebar></app-sidebar>
+        <app-sidebar (changeViewEvent)="changeView($event)"></app-sidebar>
 
         <div [className]="'view'">
-            <div [className]="'actions'">
-                <div [className]="'row'">
-                    <app-date-picker></app-date-picker>
-                    <div [className]="'buttons'">
-                        <app-button text="action one"></app-button>
-                        <app-button text="action two"></app-button>
-                    </div>        
-                </div>
-                <div [className]="'selected-funds'">
-                    <app-autocomplete></app-autocomplete>
-                </div>
-            </div>
-            <app-grid></app-grid>
-            <app-blank-page text="Momentum Exceptions"></app-blank-page>
-            <app-blank-page text="Momentum Ratings"></app-blank-page>
+            <app-blank *ngIf="visibleTab != 'fund'"></app-blank>
+            <app-fund *ngIf="visibleTab == 'fund'"></app-fund>
         </div>
     </div>
 </div>

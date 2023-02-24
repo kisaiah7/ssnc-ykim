@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +9,9 @@ export class SidebarComponent {
   closed: boolean = false;
   closing: boolean = false;
   opening: boolean = false;
-  selectedTab: string = 'fund';
+  selectedTab: string = 'dashboard';
+
+  @Output() changeViewEvent = new EventEmitter<string>();
 
   toggleSidebar() {
     if (this.closed) {
@@ -27,5 +29,9 @@ export class SidebarComponent {
       },500)
     }
   }
-  
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+    this.changeViewEvent.emit(tab);
+  }
 }

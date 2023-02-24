@@ -28,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { GridHeaderComponent } from './components/grid/grid-header/grid-header.component';
 import { BlankPageComponent } from './components/blank-page/blank-page.component';
+import { FundComponent } from './views/fund/fund.component';
+import { BlankComponent } from './views/blank/blank.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { BlankPageComponent } from './components/blank-page/blank-page.component
     DatePickerComponent,
     AutocompleteComponent,
     GridHeaderComponent,
-    BlankPageComponent
+    BlankPageComponent,
+    FundComponent,
+    BlankComponent
   ],
   imports: [
     BrowserModule,
