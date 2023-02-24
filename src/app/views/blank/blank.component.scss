@@ -1,4 +1,13 @@
 .text {
     width: 400px;
-    margin-left: 20px;
+    margin-left: 30px;
+}
+
+.icon {
+    width: 70px;
+}
+
+img {
+    filter: brightness(0) saturate(100%) invert(11%) sepia(77%) saturate(1670%) hue-rotate(191deg) brightness(92%)
+        contrast(97%);
 }

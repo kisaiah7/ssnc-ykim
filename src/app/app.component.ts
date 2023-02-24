@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  visibleTab: string = 'dashboard';
+  visibleTab: string = 'fund';
+  switchingTabs: boolean = false;
 
   changeView($event: any) {
     this.visibleTab = $event;

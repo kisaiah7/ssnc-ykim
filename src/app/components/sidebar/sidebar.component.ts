@@ -9,7 +9,7 @@ export class SidebarComponent {
   closed: boolean = false;
   closing: boolean = false;
   opening: boolean = false;
-  selectedTab: string = 'dashboard';
+  selectedTab: string = 'fund';
 
   @Output() changeViewEvent = new EventEmitter<string>();
 
