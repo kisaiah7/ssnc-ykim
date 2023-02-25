@@ -1,4 +1,4 @@
-export const FILTERS: string[] = [
+export const FUNDS: string[] = [
     'Onshore growth fund LP',
     'Offshore Growth Funds LLC',
     'Event Driven Fund UK LLC',

@@ -1,4 +1,4 @@
-<mat-form-field class="example-chip-list" appearance="fill" multiple>
+<mat-form-field>
   <mat-label>Autocomplete Funds Clients</mat-label>
   <mat-chip-grid #chipGrid aria-label="Fund selection">
     <mat-chip-row *ngFor="let fund of funds" (removed)="remove(fund)">
@@ -11,16 +11,16 @@
   <input placeholder="New Fund..." #fundInput [formControl]="fundCtrl"
     [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"/>
-
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="add($event)" 
-    hideSingleSelectionIndicator disableClose>
-    <mat-option *ngFor="let fund of filteredFunds | async" [value]="fund">
-        <mat-checkbox>
-          {{fund}}
-        </mat-checkbox>
-    </mat-option>
-  </mat-autocomplete>
 </mat-form-field>
+
+<mat-autocomplete #auto="matAutocomplete" (optionSelected)="add($event)" 
+  hideSingleSelectionIndicator disableClose>
+  <mat-option *ngFor="let fund of filteredFunds | async" [value]="fund">
+    <mat-checkbox [checked]="funds.includes(fund)">
+      {{fund}}
+    </mat-checkbox>
+  </mat-option>
+</mat-autocomplete>
 <!-- 
     <mat-select [formControl]="fundsControl" multiple>
       <mat-select-trigger>

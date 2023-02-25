@@ -1,7 +1,7 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FILTERS } from 'src/app/models/Filters';
+import { FUNDS } from 'src/app/models/Funds';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
@@ -18,7 +18,7 @@ export class AutocompleteComponent {
   fundCtrl = new FormControl('');
   filteredFunds: Observable<Array<string>>;
   funds: Array<string> = [];
-  allFunds: Array<string> = FILTERS;
+  allFunds: Array<string> = FUNDS;
   @ViewChild('fundInput') fundInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
