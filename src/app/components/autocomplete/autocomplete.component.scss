@@ -1,9 +1,8 @@
-
 mat-form-field {
     width: 778px;
 }
 
-mat-form-field .chosen-chip {
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
     background-color: var(--lightblue);
     border-radius: 4px;
 }
@@ -15,4 +14,8 @@ mat-form-field .chosen-chip {
 .mat-mdc-standard-chip {
     --mdc-chip-label-text-color: #fff;
     --mdc-chip-with-trailing-icon-trailing-icon-color: #fff;
+}
+
+.mdc-form-field > label {
+    width: 1000% !important;
 }

@@ -7,7 +7,7 @@
         </div>        
     </div>
     <div [className]="'selected-funds'">
-        <app-autocomplete></app-autocomplete>
+        <app-autocomplete (changeFilterEvent)="changeFundClientFilter($event)" ></app-autocomplete>
     </div>
 </div>
 <app-grid></app-grid>

@@ -16,7 +16,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -63,7 +64,9 @@ import { BlankComponent } from './views/blank/blank.component';
     MatChipsModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatAutocompleteModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
