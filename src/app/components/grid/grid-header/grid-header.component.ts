@@ -7,4 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class GridHeaderComponent {
   @Input() text!: String;
+  @Input() closed!: boolean;
+  @Input() closing!: boolean;
+  @Input() opening!: boolean;
 }

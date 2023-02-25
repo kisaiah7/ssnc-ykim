@@ -4,7 +4,7 @@ mat-form-field {
 
 .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
     background-color: var(--lightblue);
-    border-radius: 4px;
+    border-radius: 1px;
 }
 
 .mat-mdc-chip-remove {
@@ -19,3 +19,21 @@ mat-form-field {
 .mdc-form-field > label {
     width: 1000% !important;
 }
+
+.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+    color: var(--darkblue);
+}
+
+// .mdc-evolution-chip {
+//     display: flex;
+//     flex-direction: row-reverse;
+// }
+
+// .mdc-evolution-chip > span {
+//     padding-right: 12px;
+//     padding-left: 0;
+// }
+
+// .mat-mdc-autocomplete-panel {
+//     padding: 0;
+// }

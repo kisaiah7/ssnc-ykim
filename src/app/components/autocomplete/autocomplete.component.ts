@@ -28,6 +28,7 @@ export class AutocompleteComponent {
         (fund ? this._filter(fund) : this.allFunds.slice(0, 5))
       ),
     );
+
   }
 
   private _filter(value: string): Array<string> {

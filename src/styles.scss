@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-@import 'ag-grid-community/styles/ag-grid.css';
-@import 'ag-grid-community/styles/ag-theme-alpine.css';
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
 
 :root {
     --lightblue: rgb(59, 131, 194);
     --darkblue: rgb(16, 40, 77);
+    --mdc-checkbox-selected-focus-icon-color: rgb(59, 131, 194);
+    --mdc-checkbox-selected-hover-icon-color: rgb(59, 131, 194);
+    --mdc-checkbox-selected-icon-color: rgb(59, 131, 194);
+    --mdc-checkbox-selected-pressed-icon-color: rgb(59, 131, 194);
 }
 
 body {
@@ -16,7 +20,13 @@ body {
     -webkit-overflow-scrolling: touch;
     background-color: rgb(234, 234, 234);
 }
-html, body { height: 100%; }
-body { margin: 0; }
-* { font-family: 'Open Sans', sans-serif; }
-
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+}
+* {
+    font-family: "Open Sans", sans-serif;
+}

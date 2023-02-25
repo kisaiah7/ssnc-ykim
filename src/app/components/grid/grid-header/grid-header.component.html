@@ -1,4 +1,4 @@
-<div class="grid-header">
+<div class="grid-header" [ngClass]="{'closed': closed}">
     <h3>{{text}}</h3>
-    <mat-icon aria-hidden="false" aria-label="Toggle grid" fontIcon="expand_less"></mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Toggle grid" fontIcon="expand_less" [ngClass]="{'closed': closed, 'closing': closing, 'opening': opening }"></mat-icon>
 </div>

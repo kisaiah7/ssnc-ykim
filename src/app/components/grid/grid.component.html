@@ -1,4 +1,4 @@
-<app-grid-header text="Momentum ag-Grid" (click)="toggleGrid()"></app-grid-header>
+<app-grid-header text="Momentum ag-Grid" (click)="toggleGrid()" [closed]="closed" [closing]="closing" [opening]="opening"></app-grid-header>
 <ag-grid-angular
    style="width: 100%; height: 100%;"
    [ngClass]="{ 'ag-theme-alpine': true, 'closed': closed, 'closing': closing, 'opening': opening }"
