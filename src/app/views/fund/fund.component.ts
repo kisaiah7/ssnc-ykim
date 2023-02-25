@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./fund.component.scss']
 })
 export class FundComponent {
-  fundClientFilters: Array<string> = [];
-
-  changeFundClientFilter($event: any) {
-    this.fundClientFilters = $event;
-    console.log(this.fundClientFilters);
-  }
+  selectedFunds: Array<string> = [];
 }

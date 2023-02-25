@@ -1,7 +1,7 @@
 <mat-form-field>
   <mat-label>Autocomplete Funds Clients</mat-label>
   <mat-chip-grid #chipGrid aria-label="Fund selection">
-    <mat-chip-row *ngFor="let fund of funds" (removed)="remove(fund)">
+    <mat-chip-row *ngFor="let fund of selectedFunds" (removed)="remove(fund)">
       <button matChipRemove [attr.aria-label]="'remove ' + fund">
         <mat-icon>cancel</mat-icon>
       </button>
@@ -16,7 +16,7 @@
 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="add($event)" 
   hideSingleSelectionIndicator disableClose>
   <mat-option *ngFor="let fund of filteredFunds | async" [value]="fund">
-    <mat-checkbox [checked]="funds.includes(fund)">
+    <mat-checkbox [checked]="selectedFunds.includes(fund)">
       {{fund}}
     </mat-checkbox>
   </mat-option>

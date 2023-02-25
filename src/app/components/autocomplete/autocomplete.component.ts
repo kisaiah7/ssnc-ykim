@@ -7,7 +7,6 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
@@ -17,8 +16,9 @@ export class AutocompleteComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   fundCtrl = new FormControl('');
   filteredFunds: Observable<Array<string>>;
-  funds: Array<string> = [];
+  selectedFunds: Array<string> = [];
   allFunds: Array<string> = FUNDS;
+  @Output() selectFundsEvent = new EventEmitter<Array<string>>();
   @ViewChild('fundInput') fundInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
@@ -28,7 +28,6 @@ export class AutocompleteComponent {
         (fund ? this._filter(fund) : this.allFunds.slice(0, 5))
       ),
     );
-
   }
 
   private _filter(value: string): Array<string> {
@@ -37,27 +36,31 @@ export class AutocompleteComponent {
   }
 
   add(event: MatAutocompleteSelectedEvent): void {
-    if (this.funds.includes(event.option.viewValue)) {
+    if (this.selectedFunds.includes(event.option.viewValue)) {
       this.remove(event.option.viewValue);
     } else {
-      this.funds.push(event.option.viewValue);
+      this.selectedFunds.push(event.option.viewValue);
     }
-    // this.fundInput.nativeElement.value = '';
+    this.fundInput.nativeElement.value = '';
     this.fundCtrl.setValue(null);
+
+    this.selectFundsEvent.emit([...this.selectedFunds]);
   }
 
   remove(fund: string): void {
-    const index = this.funds.indexOf(fund);
+    const index = this.selectedFunds.indexOf(fund);
     if (index >= 0) {
-      this.funds.splice(index, 1);
+      this.selectedFunds.splice(index, 1);
+
+      this.selectFundsEvent.emit([...this.selectedFunds]);
     }
   }
 
 
   // onFundRemoved(fund: string) {
-  //   const funds = this.fundsControl.value as never[];
-  //   this.removeFirst(funds, fund);
-  //   this.fundsControl.setValue(funds); // To trigger change detection
+  //   const selectedFunds = this.fundsControl.value as never[];
+  //   this.removeFirst(selectedFunds, fund);
+  //   this.fundsControl.setValue(selectedFunds); // To trigger change detection
   // }
 
   // private removeFirst<T>(array: T[], toRemove: T): void {
@@ -69,7 +72,7 @@ export class AutocompleteComponent {
 
   // onFundChanged() {
   //   console.log('asfd');
-  //   const funds = this.fundsControl.value as never[];
-  //   this.changeFilterEvent.emit(funds.toString());
+  //   const selectedFunds = this.fundsControl.value as never[];
+  //   this.changeFilterEvent.emit(selectedFunds.toString());
   // }
 }

@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent, ColDef, GridReadyEvent, FirstDataRenderedEvent } from 'ag-grid-community';
+import { ColDef, GridReadyEvent, FirstDataRenderedEvent, IRowNode, GridApi } from 'ag-grid-community';
 import "ag-grid-enterprise";
 
 import {ItemService} from '../../services/item.service';
@@ -12,10 +12,12 @@ import {Item} from '../../models/Item';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent {
+  private gridApi!: GridApi<Item>;
   closed: boolean = false;
   closing: boolean = false;
   opening: boolean = false;
   rowData$!: Item[];
+  @Input() selectedFunds: Array<string> = [];
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
   setClosedGridStatus(status: any) {
@@ -27,6 +29,13 @@ export class GridComponent {
   setOpeningGridStatus(status: any) {
     this.opening = status;
   }
+
+  // ag-grid default properties for columns
+  public defaultColDef: ColDef = {
+    sortable: true,
+    filter: 'agSetColumnFilter',
+    flex: 1,
+  };
   
   // ag-grid properties by column
   public columnDefs: ColDef[] = [
@@ -47,13 +56,29 @@ export class GridComponent {
     { headerName: 'YTD Book P&L', field: 'ytd_book_pl', type: 'rightAligned', width: 185 },
     { headerName: 'End Book NAV', field: 'end_book_nav', type: 'rightAligned', width: 185 },
     { headerName: 'Client', field: 'client', width: 185 },
+    { field: 'fund_client', hide: true },
+    { field: 'date', hide: true}
   ];
 
-  // ag-grid default properties for columns
-  public defaultColDef: ColDef = {
-    sortable: true,
-    filter: 'agSetColumnFilter',
-  };
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes['selectedFunds'].currentValue);
+    if (changes['selectedFunds'].currentValue.length > 0) {
+      let externalFilter = {
+        fund_client: {
+          type: 'set',
+          values: changes['selectedFunds'].currentValue,
+        },
+        // date: {
+        //   type: 'inRange',
+        //   filter: changes['selectedFunds'].currentValue,
+        //   filterTo: changes['selectedFunds'].currentValue,
+        // }
+      }
+      this.gridApi.setFilterModel(externalFilter);
+    } else if (changes['selectedFunds'].currentValue.length === 0) {
+      this.gridApi.setFilterModel(null);
+    }
+  }
 
   constructor(private itemService: ItemService) {} 
 
@@ -63,6 +88,7 @@ export class GridComponent {
 
   // load grid data from server
   onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
     this.itemService.getItems().subscribe((items) => {this.rowData$ = items});
   }
 }

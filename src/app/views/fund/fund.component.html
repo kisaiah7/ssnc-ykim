@@ -7,9 +7,9 @@
         </div>        
     </div>
     <div [className]="'selected-funds'">
-        <app-autocomplete (changeFilterEvent)="changeFundClientFilter($event)" ></app-autocomplete>
+        <app-autocomplete (selectFundsEvent)="selectedFunds=$event" ></app-autocomplete>
     </div>
 </div>
-<app-grid></app-grid>
+<app-grid [selectedFunds]="selectedFunds"></app-grid>
 <app-empty-grid text="Momentum Exceptions"></app-empty-grid>
 <app-empty-grid text="Momentum Ratings"></app-empty-grid>
