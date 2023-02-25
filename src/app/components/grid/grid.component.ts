@@ -18,21 +18,14 @@ export class GridComponent {
   rowData$!: Item[];
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
-  toggleGrid() {
-    if (this.closed) {
-      this.opening = true;
-      this.closed = false;
-
-      setTimeout(()=>{
-        this.opening = false;
-      },500)
-    } else {
-      this.closing = true;
-      setTimeout(()=>{
-        this.closing = false;
-        this.closed = true;
-      },500)
-    }
+  setClosedGridStatus(status: any) {
+    this.closed = status;
+  }
+  setClosingGridStatus(status: any) {
+    this.closing = status;
+  }
+  setOpeningGridStatus(status: any) {
+    this.opening = status;
   }
   
   // ag-grid properties by column

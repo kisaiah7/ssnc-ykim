@@ -28,9 +28,9 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { GridHeaderComponent } from './components/grid/grid-header/grid-header.component';
-import { BlankPageComponent } from './components/blank-page/blank-page.component';
 import { FundComponent } from './views/fund/fund.component';
 import { BlankComponent } from './views/blank/blank.component';
+import { EmptyGridComponent } from './components/grid/empty-grid/empty-grid.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +42,9 @@ import { BlankComponent } from './views/blank/blank.component';
     DatePickerComponent,
     AutocompleteComponent,
     GridHeaderComponent,
-    BlankPageComponent,
     FundComponent,
-    BlankComponent
+    BlankComponent,
+    EmptyGridComponent
   ],
   imports: [
     BrowserModule,

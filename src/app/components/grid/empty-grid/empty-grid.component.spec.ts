@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlankPageComponent } from './blank-page.component';
+import { EmptyGridComponent } from './empty-grid.component';
 
-describe('BlankPageComponent', () => {
-  let component: BlankPageComponent;
-  let fixture: ComponentFixture<BlankPageComponent>;
+describe('EmptyGridComponent', () => {
+  let component: EmptyGridComponent;
+  let fixture: ComponentFixture<EmptyGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BlankPageComponent ]
+      declarations: [ EmptyGridComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BlankPageComponent);
+    fixture = TestBed.createComponent(EmptyGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
