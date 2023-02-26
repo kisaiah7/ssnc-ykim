@@ -3,7 +3,7 @@
   <mat-chip-grid #chipGrid aria-label="Fund selection">
     <mat-chip-row *ngFor="let fund of selectedFunds" (removed)="remove(fund)">
       <button matChipRemove [attr.aria-label]="'remove ' + fund">
-        <mat-icon>cancel</mat-icon>
+        <mat-icon>close</mat-icon>
       </button>
       {{fund}}
     </mat-chip-row>
@@ -11,6 +11,8 @@
   <input placeholder="New Fund..." #fundInput [formControl]="fundCtrl"
     [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"/>
+  <mat-icon class="removeAllChips" (click)="removeAllChips()">close</mat-icon>
+  <mat-icon class="arrowDropDown">arrow_drop_down</mat-icon>
 </mat-form-field>
 
 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="add($event)" 

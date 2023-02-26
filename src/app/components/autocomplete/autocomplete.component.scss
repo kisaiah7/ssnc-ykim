@@ -24,6 +24,19 @@ mat-form-field {
     color: var(--darkblue);
 }
 
+.removeAllChips {
+    position: absolute;
+    top: 10px;
+    right: 23px;
+    font-size: 20px;
+}
+
+.arrowDropDown {
+    position: absolute;
+    top: 7px;
+    right: -5px;
+}
+
 // .mdc-evolution-chip {
 //     display: flex;
 //     flex-direction: row-reverse;

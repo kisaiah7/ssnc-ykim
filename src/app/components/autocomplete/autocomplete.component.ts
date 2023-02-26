@@ -61,4 +61,8 @@ export class AutocompleteComponent {
     }
   }
 
+  removeAllChips(): void {
+    this.selectedFunds = [];
+    this.selectFundsEvent.emit([]);
+  }
 }
