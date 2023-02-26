@@ -3,7 +3,7 @@
         <app-date-picker (startDateEvent)="startDate=$event" (endDateEvent)="endDate=$event"></app-date-picker>
         <div [className]="'buttons'">
             <app-button text="Action 1"></app-button>
-            <app-button text="Export as CSV" (click)="exportCSV=true"></app-button>
+            <app-button text="Export as CSV" (click)="exportCSV = !exportCSV"></app-button>
         </div>        
     </div>
     <div [className]="'selected-funds'">

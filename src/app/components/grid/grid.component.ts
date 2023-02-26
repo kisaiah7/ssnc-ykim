@@ -151,7 +151,7 @@ export class GridComponent {
 
       this.gridApi.setFilterModel(externalFilter);
 
-      if (changes['exportCVS'] && changes['exportCVS'].currentValue == true) {
+      if (changes['exportCVS']) {
         this.gridApi.exportDataAsCsv();
       }
     }
