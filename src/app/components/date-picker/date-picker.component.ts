@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
@@ -30,11 +30,34 @@ export const MY_FORMATS = {
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
-
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
 })
 
-export class DatePickerComponent {
+export class DatePickerComponent implements OnInit {
   date = new FormControl(moment());
+  start = new FormControl();
+  end = new FormControl();
+
+  @Output() startDateEvent = new EventEmitter<string>;
+  @Output() endDateEvent = new EventEmitter<string>;
+
+  ngOnInit(): void {
+    this.start.valueChanges.subscribe(value => {
+      if (value) {
+        this.startDateEvent.emit(value._d.toISOString().split('T')[0]);
+      } else {
+        this.startDateEvent.emit('');
+      }
+    });
+
+    this.end.valueChanges.subscribe(value => {
+      if (value) {
+        this.endDateEvent.emit(value._d.toISOString().split('T')[0]);
+      } else {
+        this.endDateEvent.emit('');
+      }
+    });
+  }
+
 }

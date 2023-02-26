@@ -56,23 +56,4 @@ export class AutocompleteComponent {
     }
   }
 
-
-  // onFundRemoved(fund: string) {
-  //   const selectedFunds = this.fundsControl.value as never[];
-  //   this.removeFirst(selectedFunds, fund);
-  //   this.fundsControl.setValue(selectedFunds); // To trigger change detection
-  // }
-
-  // private removeFirst<T>(array: T[], toRemove: T): void {
-  //   const index = array.indexOf(toRemove);
-  //   if (index !== -1) {
-  //     array.splice(index, 1);
-  //   }
-  // }
-
-  // onFundChanged() {
-  //   console.log('asfd');
-  //   const selectedFunds = this.fundsControl.value as never[];
-  //   this.changeFilterEvent.emit(selectedFunds.toString());
-  // }
 }

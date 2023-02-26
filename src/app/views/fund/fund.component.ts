@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class FundComponent {
   selectedFunds: Array<string> = [];
+  startDate: string = '';
+  endDate: string = '';
 }

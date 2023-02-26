@@ -14,7 +14,7 @@
 </mat-form-field>
 
 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="add($event)" 
-  hideSingleSelectionIndicator disableClose>
+  hideSingleSelectionIndicator>
   <mat-option *ngFor="let fund of filteredFunds | async" [value]="fund">
     <mat-checkbox [checked]="selectedFunds.includes(fund)">
       {{fund}}

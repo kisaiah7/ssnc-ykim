@@ -1,10 +1,11 @@
 import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ColDef, GridReadyEvent, FirstDataRenderedEvent, IRowNode, GridApi } from 'ag-grid-community';
+import { ColDef, GridReadyEvent, FirstDataRenderedEvent, IRowNode, GridApi, IDateFilterParams } from 'ag-grid-community';
 import "ag-grid-enterprise";
 
 import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/Item';
+import { FUNDS } from 'src/app/models/Funds';
 
 @Component({
   selector: 'app-grid',
@@ -18,6 +19,8 @@ export class GridComponent {
   opening: boolean = false;
   rowData$!: Item[];
   @Input() selectedFunds: Array<string> = [];
+  @Input() startDate: string | null = '';
+  @Input() endDate: string | null = '';
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
   setClosedGridStatus(status: any) {
@@ -36,6 +39,29 @@ export class GridComponent {
     filter: 'agSetColumnFilter',
     flex: 1,
   };
+
+  public filterParams: IDateFilterParams = {
+    comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
+      var dateAsString = cellValue;
+      if (dateAsString == null) return -1;
+      var dateParts = dateAsString.split('/');
+      var cellDate = new Date(
+        Number(dateParts[2]),
+        Number(dateParts[1]) - 1,
+        Number(dateParts[0])
+      );
+      if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+        return 0;
+      }
+      if (cellDate < filterLocalDateAtMidnight) {
+        return -1;
+      }
+      if (cellDate > filterLocalDateAtMidnight) {
+        return 1;
+      }
+      return 0;
+    },
+  };
   
   // ag-grid properties by column
   public columnDefs: ColDef[] = [
@@ -52,33 +78,13 @@ export class GridComponent {
       width: 185
     },
     { headerName: 'Daily Book P&L', field: 'daily_book_pl', type: 'rightAligned', width: 185 },
-    { headerName: 'MTD Book P&L', field: 'mtd_book_pl', type: 'rightAligned', width: 185 },
-    { headerName: 'YTD Book P&L', field: 'ytd_book_pl', type: 'rightAligned', width: 185 },
-    { headerName: 'End Book NAV', field: 'end_book_nav', type: 'rightAligned', width: 185 },
+    { headerName: 'MTD Book P&L', field: 'mtd_book_pl', filter: 'agNumberColumnFilter', type: 'rightAligned', width: 185 },
+    { headerName: 'YTD Book P&L', field: 'ytd_book_pl', filter: 'agNumberColumnFilter', type: 'rightAligned', width: 185 },
+    { headerName: 'End Book NAV', field: 'end_book_nav', filter: 'agNumberColumnFilter', type: 'rightAligned', width: 185 },
     { headerName: 'Client', field: 'client', width: 185 },
     { field: 'fund_client', hide: true },
-    { field: 'date', hide: true}
+    { field: 'date', filter: 'agDateColumnFilter', filterParams: this.filterParams, hide: true }
   ];
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes['selectedFunds'].currentValue);
-    if (changes['selectedFunds'].currentValue.length > 0) {
-      let externalFilter = {
-        fund_client: {
-          type: 'set',
-          values: changes['selectedFunds'].currentValue,
-        },
-        // date: {
-        //   type: 'inRange',
-        //   filter: changes['selectedFunds'].currentValue,
-        //   filterTo: changes['selectedFunds'].currentValue,
-        // }
-      }
-      this.gridApi.setFilterModel(externalFilter);
-    } else if (changes['selectedFunds'].currentValue.length === 0) {
-      this.gridApi.setFilterModel(null);
-    }
-  }
 
   constructor(private itemService: ItemService) {} 
 
@@ -91,4 +97,55 @@ export class GridComponent {
     this.gridApi = params.api;
     this.itemService.getItems().subscribe((items) => {this.rowData$ = items});
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    let dateSortType = 'greaterThan';
+    let dateFrom, dateTo;
+    
+    if (changes['selectedFunds'] && changes['selectedFunds'].currentValue.length > 0) {
+      this.selectedFunds = changes['selectedFunds'].currentValue;
+    } 
+
+    if (changes['startDate'] && changes['startDate'].currentValue.length > 0) {
+      this.startDate = changes['startDate'].currentValue;
+    }
+
+    if (changes['endDate'] && changes['endDate'].currentValue.length > 0) {
+      this.endDate = changes['endDate'].currentValue;
+    }
+
+    if (this.startDate && this.endDate) {
+      dateSortType = 'inRange';
+      dateFrom = this.startDate;
+      dateTo = this.endDate;
+    } else if (this.startDate) {
+      dateSortType = 'greaterThan';
+      dateFrom = this.startDate;
+    } else if (this.endDate) {
+      dateSortType = 'lessThan';
+      dateFrom = this.endDate;
+    }
+
+    if (this.selectedFunds.length == 0) {
+      this.selectedFunds = FUNDS;
+    }
+
+    let externalFilter = {
+      fund_client: {
+        type: 'set',
+        values: this.selectedFunds,
+      },
+      date: {
+        filterType: 'date',
+        type: dateSortType,
+        dateFrom: dateFrom,
+        dateTo: dateTo,
+      }
+    }
+
+    this.gridApi.setFilterModel(externalFilter);
+    console.log(this.gridApi.getFilterModel());
+  }
+
+  
 }
