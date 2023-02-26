@@ -2,8 +2,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FUNDS } from 'src/app/models/Funds';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
+import {MatAutocompleteSelectedEvent, MatAutocompleteTrigger} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -20,6 +19,7 @@ export class AutocompleteComponent {
   allFunds: Array<string> = FUNDS;
   @Output() selectFundsEvent = new EventEmitter<Array<string>>();
   @ViewChild('fundInput') fundInput!: ElementRef<HTMLInputElement>;
+  @ViewChild(MatAutocompleteTrigger) autoTrigger!: MatAutocompleteTrigger;
 
   constructor() {
     this.filteredFunds = this.fundCtrl.valueChanges.pipe(
@@ -36,6 +36,11 @@ export class AutocompleteComponent {
   }
 
   add(event: MatAutocompleteSelectedEvent): void {
+    const self = this;
+    setTimeout(function () {
+        self.autoTrigger.openPanel();
+    }, 0.1);
+
     if (this.selectedFunds.includes(event.option.viewValue)) {
       this.remove(event.option.viewValue);
     } else {
