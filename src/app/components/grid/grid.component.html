@@ -12,7 +12,7 @@
   [ngClass]="{ 'ag-theme-alpine': true, 'closed': closed, 'closing': closing, 'opening': opening }"
   [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef"
-  [rowData]="rowData$"
+  [rowData]="gridData$"
   [rowSelection]="'multiple'"
   [animateRows]="true"
   (gridReady)="onGridReady($event)"

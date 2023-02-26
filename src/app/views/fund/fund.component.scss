@@ -4,8 +4,7 @@
 }
 
 .actions .row .buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 20px;
 }
 

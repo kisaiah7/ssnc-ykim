@@ -17,10 +17,12 @@ export class GridComponent {
   closed: boolean;
   closing: boolean;
   opening: boolean;
-  rowData$!: Item[];
+  gridData$!: Item[];
+  displayedRowCount: number = 0;
   @Input() selectedFunds: Array<string> = [];
   @Input() startDate: string | null = '';
   @Input() endDate: string | null = '';
+  @Input() exportCVS: boolean = false;
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
   constructor(private itemService: ItemService) {
@@ -98,7 +100,7 @@ export class GridComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
-    this.itemService.getItems().subscribe((items) => {this.rowData$ = items});
+    this.itemService.getItems().subscribe((items) => {this.gridData$ = items});
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -148,6 +150,10 @@ export class GridComponent {
       }
 
       this.gridApi.setFilterModel(externalFilter);
+
+      if (changes['exportCVS'] && changes['exportCVS'].currentValue == true) {
+        this.gridApi.exportDataAsCsv();
+      }
     }
   }  
 }
