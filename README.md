@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Start the Application
 
+Run `npm install` to download all packages.
+
 Run `ng serve` to start up the website. Navigate to `http://localhost:4200/`.
 
 Run `npm run server` to start up the backend server. Optionally visit `http://localhost:5000/items` to view the json data. I've added "date" and "fund_client" values to add additional filters to the grid data via the Date Picker and Autocomplete components.
