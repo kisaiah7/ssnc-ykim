@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-fund',
@@ -11,4 +11,7 @@ export class FundComponent {
   endDate: string = '';
   exportCSV: boolean = false;
   addItem: boolean = false;
+
+  constructor() {}
 }
+

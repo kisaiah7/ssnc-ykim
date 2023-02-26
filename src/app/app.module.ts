@@ -13,11 +13,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -44,7 +44,7 @@ import { EmptyGridComponent } from './components/grid/empty-grid/empty-grid.comp
     GridHeaderComponent,
     FundComponent,
     BlankComponent,
-    EmptyGridComponent
+    EmptyGridComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,11 +62,11 @@ import { EmptyGridComponent } from './components/grid/empty-grid/empty-grid.comp
     MatSelectModule,
     MatNativeDateModule,
     MatChipsModule,
-    MatSnackBarModule,
     MatMenuModule,
     MatBadgeModule,
     MatAutocompleteModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

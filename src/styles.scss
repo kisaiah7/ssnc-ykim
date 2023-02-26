@@ -8,7 +8,7 @@
 
 $my-primary: mat.define-palette(mat.$blue-palette, 900);
 $my-accent: mat.define-palette(mat.$blue-palette, 500, 100, 800);
-$my-warn: mat.define-palette(mat.$blue-palette);
+$my-warn: mat.define-palette(mat.$red-palette);
 $my-theme: mat.define-light-theme(
     (
         color: (

@@ -1,11 +1,11 @@
 <header>
-    <div [className]="'wrapper'">
-        <div [className]="'logo'" (click)="openSnackBar('Mock Action', 'Dismiss')">
-            <img [className]="'icon'" src="/assets/Momentum-logo.svg" alt="momentum-logo">
-            <img [className]="'text'" src="/assets/Momentum-text.svg" alt="Momentum">
+    <div class="wrapper">
+        <div class="logo">
+            <img class="icon" src="/assets/Momentum-logo.svg" alt="momentum-logo">
+            <img class="text" src="/assets/Momentum-text.svg" alt="Momentum">
         </div>
         <mat-icon matBadge="15" matBadgeColor="accent">
-            <img [className]="'avatar'" src="/assets/account_circle-white-24dp.svg" alt="avatar" [matMenuTriggerFor]="menu" >
+            <img class="avatar" src="/assets/account_circle-white-24dp.svg" alt="avatar" [matMenuTriggerFor]="menu" >
         </mat-icon>
         <mat-menu #menu="matMenu">
             <button mat-menu-item>Profile</button>
