@@ -15,12 +15,6 @@ export class GridHeaderComponent {
   @Output() closingGridEvent = new EventEmitter<boolean>();
   @Output() openingGridEvent = new EventEmitter<boolean>();
 
-  constructor() {
-    console.log(this.closed);
-    console.log(this.closing);
-    console.log(this.opening);
-  }
-
   toggleGrid() {
     if (this.closed) {
       this.opening = true;

@@ -96,60 +96,58 @@ export class GridComponent {
     params.api.sizeColumnsToFit();
   }
 
-  // load grid data from server
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     this.itemService.getItems().subscribe((items) => {this.rowData$ = items});
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    let dateSortType = 'greaterThan';
-    let dateFrom, dateTo;
-    
-    if (changes['selectedFunds'] && changes['selectedFunds'].currentValue.length > 0) {
-      this.selectedFunds = changes['selectedFunds'].currentValue;
-    } 
+    if (this.gridApi) {
+      let dateSortType = 'greaterThan';
+      let dateFrom, dateTo;
+      
+      if (changes['selectedFunds'] && changes['selectedFunds'].currentValue.length > 0) {
+        this.selectedFunds = changes['selectedFunds'].currentValue;
+      } 
 
-    if (changes['startDate'] && changes['startDate'].currentValue.length > 0) {
-      this.startDate = changes['startDate'].currentValue;
-    }
-
-    if (changes['endDate'] && changes['endDate'].currentValue.length > 0) {
-      this.endDate = changes['endDate'].currentValue;
-    }
-
-    if (this.startDate && this.endDate) {
-      dateSortType = 'inRange';
-      dateFrom = this.startDate;
-      dateTo = this.endDate;
-    } else if (this.startDate) {
-      dateSortType = 'greaterThan';
-      dateFrom = this.startDate;
-    } else if (this.endDate) {
-      dateSortType = 'lessThan';
-      dateFrom = this.endDate;
-    }
-
-    if (this.selectedFunds.length == 0) {
-      this.selectedFunds = FUNDS;
-    }
-
-    let externalFilter = {
-      fund_client: {
-        type: 'set',
-        values: this.selectedFunds,
-      },
-      date: {
-        filterType: 'date',
-        type: dateSortType,
-        dateFrom: dateFrom,
-        dateTo: dateTo,
+      if (changes['startDate'] && changes['startDate'].currentValue.length > 0) {
+        this.startDate = changes['startDate'].currentValue;
       }
+
+      if (changes['endDate'] && changes['endDate'].currentValue.length > 0) {
+        this.endDate = changes['endDate'].currentValue;
+      }
+
+      if (this.startDate && this.endDate) {
+        dateSortType = 'inRange';
+        dateFrom = this.startDate;
+        dateTo = this.endDate;
+      } else if (this.startDate) {
+        dateSortType = 'greaterThan';
+        dateFrom = this.startDate;
+      } else if (this.endDate) {
+        dateSortType = 'lessThan';
+        dateFrom = this.endDate;
+      }
+
+      if (this.selectedFunds.length == 0) {
+        this.selectedFunds = FUNDS;
+      }
+
+      let externalFilter = {
+        fund_client: {
+          type: 'set',
+          values: this.selectedFunds,
+        },
+        date: {
+          filterType: 'date',
+          type: dateSortType,
+          dateFrom: dateFrom,
+          dateTo: dateTo,
+        }
+      }
+
+      this.gridApi.setFilterModel(externalFilter);
     }
-
-    this.gridApi.setFilterModel(externalFilter);
-    console.log(this.gridApi.getFilterModel());
-  }
-
-  
+  }  
 }

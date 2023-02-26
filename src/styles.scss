@@ -1,7 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 @import "ag-grid-community/styles/ag-grid.css";
 @import "ag-grid-community/styles/ag-theme-alpine.css";
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$blue-palette, 900);
+$my-accent: mat.define-palette(mat.$blue-palette, 500, 100, 800);
+$my-warn: mat.define-palette(mat.$blue-palette);
+$my-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $my-primary,
+            accent: $my-accent,
+            warn: $my-warn,
+        ),
+    )
+);
+
+@include mat.all-component-themes($my-theme);
 
 :root {
     --lightblue: rgb(59, 131, 194);
