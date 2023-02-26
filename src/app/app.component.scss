@@ -40,3 +40,9 @@ app-blank {
         opacity: 1;
     }
 }
+
+@media (max-width: 1440px) {
+    .app .container .view {
+        width: 76%;
+    }
+}

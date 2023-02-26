@@ -117,3 +117,20 @@
         margin-right: 8px;
     }
 }
+
+@media (max-width: 1440px) {
+    .sidebar ul li h3 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar ul li.toggle,
+    .sidebar ul li h3 {
+        display: none;
+    }
+}

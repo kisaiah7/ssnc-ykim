@@ -14,7 +14,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -63,7 +62,6 @@ import { EmptyGridComponent } from './components/grid/empty-grid/empty-grid.comp
     MatNativeDateModule,
     MatChipsModule,
     MatMenuModule,
-    MatBadgeModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatDialogModule

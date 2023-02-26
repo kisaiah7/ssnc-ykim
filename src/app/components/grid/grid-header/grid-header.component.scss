@@ -1,5 +1,5 @@
 .grid-header {
-    height: 47px;
+    height: 45px;
     background-color: var(--darkblue);
     color: white;
     border-radius: 5px 5px 0 0;
@@ -40,5 +40,11 @@
     }
     100% {
         rotate: 180deg;
+    }
+}
+
+@media (max-width: 1440px) {
+    .grid-header h3 {
+        font-size: 14px;
     }
 }

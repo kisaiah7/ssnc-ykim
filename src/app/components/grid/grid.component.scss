@@ -22,3 +22,9 @@ ag-grid-angular.closed {
         display: none;
     }
 }
+
+@media (max-width: 1024px) {
+    .ag-cell {
+        font-size: 12px;
+    }
+}
