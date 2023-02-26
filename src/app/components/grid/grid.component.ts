@@ -6,6 +6,7 @@ import "ag-grid-enterprise";
 import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/Item';
 import { FUNDS } from 'src/app/models/Funds';
+import { ITEMS } from 'src/app/models/mock-items';
 
 @Component({
   selector: 'app-grid',
@@ -17,7 +18,7 @@ export class GridComponent {
   closed: boolean;
   closing: boolean;
   opening: boolean;
-  gridData$!: Item[];
+  gridData$: Item[] = ITEMS;
   displayedRowCount: number = 0;
   @Input() selectedFunds: Array<string> = [];
   @Input() startDate: string | null = '';
