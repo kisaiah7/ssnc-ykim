@@ -7,9 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class EmptyGridComponent {
   @Input() text: string = '';
-  closed: boolean = true;
-  closing: boolean = false;
-  opening: boolean = false;
+  closed: boolean;
+  closing: boolean;
+  opening: boolean;
+
+  constructor() {
+    this.closed = true;
+    this.closing = false;
+    this.opening = false;
+  }
 
   setClosedGridStatus(status: any) {
     this.closed = status;

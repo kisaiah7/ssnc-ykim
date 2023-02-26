@@ -8,12 +8,18 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class GridHeaderComponent {
   @Input() text!: String;
-  @Input() closed!: boolean;
-  @Input() closing!: boolean;
-  @Input() opening!: boolean;
+  @Input() closed: boolean = false;
+  @Input() closing: boolean = false;
+  @Input() opening: boolean = false;
   @Output() closedGridEvent = new EventEmitter<boolean>();
   @Output() closingGridEvent = new EventEmitter<boolean>();
   @Output() openingGridEvent = new EventEmitter<boolean>();
+
+  constructor() {
+    console.log(this.closed);
+    console.log(this.closing);
+    console.log(this.opening);
+  }
 
   toggleGrid() {
     if (this.closed) {

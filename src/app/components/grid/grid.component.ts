@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, FirstDataRenderedEvent, IRowNode, GridApi, IDateFilterParams } from 'ag-grid-community';
 import "ag-grid-enterprise";
@@ -14,14 +14,20 @@ import { FUNDS } from 'src/app/models/Funds';
 })
 export class GridComponent {
   private gridApi!: GridApi<Item>;
-  closed: boolean = false;
-  closing: boolean = false;
-  opening: boolean = false;
+  closed: boolean;
+  closing: boolean;
+  opening: boolean;
   rowData$!: Item[];
   @Input() selectedFunds: Array<string> = [];
   @Input() startDate: string | null = '';
   @Input() endDate: string | null = '';
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
+
+  constructor(private itemService: ItemService) {
+    this.closed = false;
+    this.closing = false;
+    this.opening = false;
+  } 
 
   setClosedGridStatus(status: any) {
     this.closed = status;
@@ -85,8 +91,6 @@ export class GridComponent {
     { field: 'fund_client', hide: true },
     { field: 'date', filter: 'agDateColumnFilter', filterParams: this.filterParams, hide: true }
   ];
-
-  constructor(private itemService: ItemService) {} 
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.sizeColumnsToFit();

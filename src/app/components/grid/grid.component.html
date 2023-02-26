@@ -3,9 +3,9 @@
   (closedGridEvent)="setClosedGridStatus($event)"
   (closingGridEvent)="setClosingGridStatus($event)"
   (openingGridEvent)="setOpeningGridStatus($event)"
-  (closed)="closed"
-  (closing)="closing"
-  (opening)="opening"
+  [closed]="closed"
+  [closing]="closing"
+  [opening]="opening"
   ></app-grid-header>
 <ag-grid-angular
   style="width: 100%; height: 100%;"
