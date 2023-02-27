@@ -12,7 +12,7 @@ Run `npm run server` to start up the backend server. Optionally visit `http://lo
 
 *Backup local data will populate the grid in the case the server is down.
 
-## Features
+## Lookout For
 
 - Use grid headers to filter and sort the items.
 - Use the Date Picker to set start and/or end date for items. Items have a "date" column, which isn't displayed in the grid but exists in the json.
@@ -21,3 +21,4 @@ Run `npm run server` to start up the backend server. Optionally visit `http://lo
 - Toggle the 3 accordions by clicking the dark blue headers.
 - Toggle the sidebar by clicking the arrow on at its top.
 - Visit different pages by clicking through the sidebar.
+- Check for responsiveness at 1440px and 1024px. Measurements specified in the mockups are visible above 1440px. They have been adjusted for smaller screens.
