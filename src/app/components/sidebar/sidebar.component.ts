@@ -13,6 +13,7 @@ export class SidebarComponent {
 
   @Output() changeViewEvent = new EventEmitter<string>();
 
+  // Precise class changes for smooth accordion animations
   toggleSidebar() {
     if (this.closed) {
       this.opening = true;
@@ -30,6 +31,7 @@ export class SidebarComponent {
     }
   }
 
+  // Change views when selecting a tab
   selectTab(tab: string) {
     this.selectedTab = tab;
     this.changeViewEvent.emit(tab);

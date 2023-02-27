@@ -1,29 +1,44 @@
+// Fixed width for autocomplete field
 mat-form-field {
     width: 778px;
 }
 
-.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
-    background-color: var(--lightblue);
-    border-radius: 1px;
-}
-
-.mat-mdc-chip-remove {
-    opacity: 0.9;
-}
-
-.mat-mdc-standard-chip {
-    --mdc-chip-label-text-color: #fff;
-    --mdc-chip-with-trailing-icon-trailing-icon-color: #fff;
-}
-
+// Field styling
 .mdc-form-field > label {
     width: 1000% !important;
 }
-
 .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
     color: var(--darkblue);
 }
 
+// Selected options styling
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
+    background-color: var(--lightblue);
+    border-radius: 1px;
+}
+.mat-mdc-chip-remove {
+    opacity: 0.9;
+}
+.mat-mdc-standard-chip {
+    --mdc-chip-label-text-color: #fff;
+    --mdc-chip-with-trailing-icon-trailing-icon-color: #fff;
+}
+.mdc-evolution-chip {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.mat-mdc-standard-chip.mdc-evolution-chip--with-trailing-action {
+    padding-right: 12px;
+    font-size: 13px;
+    font-weight: 900;
+}
+.mdc-evolution-chip mat-icon {
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 900;
+}
+
+// Remove chip styling
 .removeAllChips {
     position: absolute;
     top: 10px;
@@ -32,32 +47,15 @@ mat-form-field {
     cursor: pointer;
     transition: 0.5s ease;
 }
-
 .removeAllChips:hover {
     text-shadow: 0 1px 1px grey;
 }
 
+// Dropdown arrow styling
 .arrowDropDown {
     position: absolute;
     top: 7px;
     right: -5px;
-}
-
-.mdc-evolution-chip {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.mat-mdc-standard-chip.mdc-evolution-chip--with-trailing-action {
-    padding-right: 12px;
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.mdc-evolution-chip mat-icon {
-    font-size: 13px;
-    margin-top: 5px;
-    font-weight: 900;
 }
 
 @media (max-width: 1024px) {

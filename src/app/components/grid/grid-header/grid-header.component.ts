@@ -15,6 +15,8 @@ export class GridHeaderComponent {
   @Output() closingGridEvent = new EventEmitter<boolean>();
   @Output() openingGridEvent = new EventEmitter<boolean>();
 
+  // Precise toggle grid class name changes for smoother animations
+  // Emit changes to pass data to grid body component to synchronize animations
   toggleGrid() {
     if (this.closed) {
       this.opening = true;

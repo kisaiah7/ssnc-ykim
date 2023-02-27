@@ -21,6 +21,8 @@ export class AutocompleteComponent {
   @ViewChild('fundInput') fundInput!: ElementRef<HTMLInputElement>;
   @ViewChild(MatAutocompleteTrigger) autoTrigger!: MatAutocompleteTrigger;
 
+  // Initialize filter via user input
+  // Limit to 5 results at a time
   constructor() {
     this.filteredFunds = this.fundCtrl.valueChanges.pipe(
       startWith(null),
@@ -30,11 +32,13 @@ export class AutocompleteComponent {
     );
   }
 
+  // Filter results by user input string
   private _filter(value: string): Array<string> {
     const filterValue = value.toLowerCase();
     return this.allFunds.filter(fund => fund.toLowerCase().includes(filterValue)).splice(0, 5);
   }
 
+  // Add selected option
   add(event: MatAutocompleteSelectedEvent): void {
     const self = this;
     setTimeout(function () {
@@ -48,19 +52,19 @@ export class AutocompleteComponent {
     }
     this.fundInput.nativeElement.value = '';
     this.fundCtrl.setValue(null);
-
     this.selectFundsEvent.emit([...this.selectedFunds]);
   }
 
+  // Remove selected option
   remove(fund: string): void {
     const index = this.selectedFunds.indexOf(fund);
     if (index >= 0) {
       this.selectedFunds.splice(index, 1);
-
       this.selectFundsEvent.emit([...this.selectedFunds]);
     }
   }
 
+  // Remove all selected options handler
   removeAllChips(): void {
     this.selectedFunds = [];
     this.selectFundsEvent.emit([]);

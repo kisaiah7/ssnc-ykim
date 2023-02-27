@@ -1,15 +1,15 @@
-<div [className]="'actions'">
-    <div [className]="'row'">
+<div class="actions">
+    <div class="row">
         <app-date-picker (startDateEvent)="startDate=$event" (endDateEvent)="endDate=$event"></app-date-picker>
-        <div [className]="'buttons'">
+        <div class="buttons">
             <app-button text="Action 1"></app-button>
             <app-button text="Export as CSV" (click)="exportCSV = !exportCSV"></app-button>
         </div>        
     </div>
-    <div [className]="'selected-funds'">
+    <div class="selected-funds">
         <app-autocomplete (selectFundsEvent)="selectedFunds=$event" ></app-autocomplete>
     </div>
 </div>
-<app-grid [selectedFunds]="selectedFunds" [startDate]="startDate" [endDate]="endDate" [exportCVS]="exportCSV"></app-grid>
+<app-grid [selectedFunds]="selectedFunds" [startDate]="startDate" [endDate]="endDate" [exportCSV]="exportCSV"></app-grid>
 <app-empty-grid text="Momentum Exceptions"></app-empty-grid>
 <app-empty-grid text="Momentum Ratings"></app-empty-grid>

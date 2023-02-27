@@ -12,6 +12,7 @@ export class ItemService {
 
   constructor(private http:HttpClient) { }
 
+  // Connect to server to fetch json data of items to populate grid
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.apiUrl);
   }

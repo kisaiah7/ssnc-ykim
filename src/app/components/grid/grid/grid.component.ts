@@ -3,8 +3,8 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, FirstDataRenderedEvent, IRowNode, GridApi, IDateFilterParams } from 'ag-grid-community';
 import "ag-grid-enterprise";
 
-import {ItemService} from '../../services/item.service';
-import {Item} from '../../models/Item';
+import {ItemService} from '../../../services/item.service';
+import {Item} from '../../../models/Item';
 import { FUNDS } from 'src/app/models/Funds';
 import { ITEMS } from 'src/app/models/mock-items';
 
@@ -14,17 +14,25 @@ import { ITEMS } from 'src/app/models/mock-items';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent {
+  // GridApi to access Ag-Grid's APIs
   private gridApi!: GridApi<Item>;
+  @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
+
+  // Close/closing/opening statuses for smooth accordion animations
   closed: boolean;
   closing: boolean;
   opening: boolean;
+
+  // Grid data to default to local data
   gridData$: Item[] = ITEMS;
-  displayedRowCount: number = 0;
+
+  // Track selected funds from autocomplete
   @Input() selectedFunds: Array<string> = [];
+  // Track start date and end date from date picker
   @Input() startDate: string | null = '';
   @Input() endDate: string | null = '';
-  @Input() exportCVS: boolean = false;
-  @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
+  // Track export csv actions
+  @Input() exportCSV: boolean = false;
 
   constructor(private itemService: ItemService) {
     this.closed = false;
@@ -32,6 +40,7 @@ export class GridComponent {
     this.opening = false;
   } 
 
+  // Toggle closed/closing/opening statuses for smooth accordion animations
   setClosedGridStatus(status: any) {
     this.closed = status;
   }
@@ -42,13 +51,14 @@ export class GridComponent {
     this.opening = status;
   }
 
-  // ag-grid default properties for columns
+  // Define default ag-grid properties for columns
   public defaultColDef: ColDef = {
     sortable: true,
     filter: 'agSetColumnFilter',
     flex: 1,
   };
 
+  // Define filter parameters for date (via date picker)
   public filterParams: IDateFilterParams = {
     comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
       var dateAsString = cellValue;
@@ -72,7 +82,7 @@ export class GridComponent {
     },
   };
   
-  // ag-grid properties by column
+  // Define ag-grid column properties
   public columnDefs: ColDef[] = [
     { headerName: 'Fund', field: 'fund', cellStyle: {color: '#0985C7'}, width: 150 },
     { 
@@ -95,15 +105,19 @@ export class GridComponent {
     { field: 'date', filter: 'agDateColumnFilter', filterParams: this.filterParams, hide: true }
   ];
 
+  // Auto size columns to view fit on first render
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.sizeColumnsToFit();
   }
 
+  // Subscribe to server call for item data once grid is ready
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     this.itemService.getItems().subscribe((items) => {this.gridData$ = items});
   }
 
+  // Listen to changes in selected funds (autocomplete), start/end date (date picker)
+  // Filter items accordingly
   ngOnChanges(changes: SimpleChanges): void {
     if (this.gridApi) {
       let dateSortType = 'greaterThan';
@@ -152,7 +166,7 @@ export class GridComponent {
 
       this.gridApi.setFilterModel(externalFilter);
 
-      if (changes['exportCVS']) {
+      if (changes['exportCSV']) {
         this.gridApi.exportDataAsCsv();
       }
     }

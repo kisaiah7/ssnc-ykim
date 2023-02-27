@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-fund',
@@ -6,12 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./fund.component.scss']
 })
 export class FundComponent {
-  selectedFunds: Array<string> = [];
-  startDate: string = '';
-  endDate: string = '';
-  exportCSV: boolean = false;
-  addItem: boolean = false;
-
-  constructor() {}
+  @Input() selectedFunds: Array<string> = [];
+  @Input() startDate: string = '';
+  @Input() endDate: string = '';
+  @Input() exportCSV: boolean = false;
+  @Input() addItem: boolean = false;
 }
 

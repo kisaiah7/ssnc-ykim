@@ -1,4 +1,4 @@
-// sidebar.component.css
+// Sidebar styling
 .sidebar {
     height: 90vh;
     margin-left: 24px;
@@ -22,7 +22,7 @@
     background: linear-gradient(90deg, #052950 0%, #052950 100%);
 }
 
-// closing/opening animations
+// Closing and Opening animations and view changes
 .sidebar.opening ul li h3 {
     animation: disappear-text 0.5s reverse ease;
 }
@@ -46,7 +46,7 @@
     cursor: pointer;
 }
 
-// toggle arrow animations
+// Toggle arrow styling and animations
 .sidebar ul li.toggle {
     display: flex;
     justify-content: flex-end;
@@ -62,7 +62,7 @@
     margin-right: 0;
 }
 
-// link hover animations
+// Hovering link animations
 .sidebar ul li.link::before {
     position: absolute;
     content: "";
@@ -91,7 +91,7 @@
     white-space: nowrap;
 }
 
-// animations for toggling view
+// Animations for toggling sidebar
 @keyframes minimize-container {
     0% {
         width: 271px;

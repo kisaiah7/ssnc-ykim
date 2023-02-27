@@ -1,6 +1,8 @@
+// Date picker styling
 mat-form-field {
     width: 300px;
 }
+// Place calendar icon before input box
 mat-form-field .mat-mdc-form-field-flex {
     display: flex;
     flex-direction: row-reverse;

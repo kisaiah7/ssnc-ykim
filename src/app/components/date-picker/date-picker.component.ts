@@ -8,6 +8,7 @@ import {default as _rollupMoment} from 'moment';
 
 const moment = _rollupMoment || _moment;
 
+// Set date formatting
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MMM-YYYY',
@@ -43,6 +44,7 @@ export class DatePickerComponent implements OnInit {
   @Output() endDateEvent = new EventEmitter<string>;
 
   ngOnInit(): void {
+    // Subscribe to start date changes
     this.start.valueChanges.subscribe(value => {
       if (value) {
         this.startDateEvent.emit(value._d.toISOString().split('T')[0]);
@@ -51,6 +53,7 @@ export class DatePickerComponent implements OnInit {
       }
     });
 
+    // Subscribe to end date changes
     this.end.valueChanges.subscribe(value => {
       if (value) {
         this.endDateEvent.emit(value._d.toISOString().split('T')[0]);

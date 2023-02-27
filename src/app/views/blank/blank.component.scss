@@ -1,12 +1,12 @@
+// Blank view styling
 .text {
     width: 400px;
     margin-left: 30px;
 }
-
 .icon {
     width: 70px;
 }
-
+// Invert logo svg's to be black instead of white
 img {
     filter: brightness(0) saturate(100%) invert(11%) sepia(77%) saturate(1670%) hue-rotate(191deg) brightness(92%)
         contrast(97%);
